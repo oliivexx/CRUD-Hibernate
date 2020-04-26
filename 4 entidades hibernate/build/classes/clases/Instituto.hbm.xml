@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24-feb-2020 14:12:24 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="clases.Instituto" table="instituto" catalog="cuatro_entidades" optimistic-lock="version">
+        <id name="codInstituto" type="java.lang.Integer">
+            <column name="codInstituto" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="50" not-null="true" />
+        </property>
+        <property name="provincia" type="string">
+            <column name="provincia" length="50" not-null="true" />
+        </property>
+        <property name="calle" type="string">
+            <column name="calle" length="50" not-null="true" />
+        </property>
+        <set name="clases" table="clase" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="instituto" not-null="true" />
+            </key>
+            <one-to-many class="clases.Clase" />
+        </set>
+    </class>
+</hibernate-mapping>
